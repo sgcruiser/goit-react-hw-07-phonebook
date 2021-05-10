@@ -1,0 +1,28 @@
+.form {
+  width: 330px;
+  padding: 9px;
+  border: 1px solid #929292;
+  border-radius: 9px;
+}
+
+.label {
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.button {
+  padding: 5px;
+
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+
+  &:enabled {
+    &:hover,
+    :focus {
+      background-color: rgb(7, 241, 163);
+      color: rgb(0, 150, 100);
+    }
+  }
+}

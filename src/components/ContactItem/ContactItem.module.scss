@@ -1,0 +1,40 @@
+.contact {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    margin-top: 7px;
+
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+  }
+
+  &__number {
+    font-style: italic;
+  }
+
+  &__button {
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    font-weight: 500;
+
+    &:hover,
+    :focus {
+      color: crimson;
+      // font-weight: 500;
+      background-color: rgb(252, 152, 152);
+    }
+  }
+}
