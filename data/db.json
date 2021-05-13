@@ -1,3 +1,19 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "Cat",
+      "number": "+380380380380",
+      "id": "1"
+    },
+    {
+      "name": "Dog",
+      "number": "+380838383838",
+      "id": "2"
+    },
+    {
+      "name": "Mouse",
+      "number": "+380333888333",
+      "id": "3"
+    }
+  ]
 }

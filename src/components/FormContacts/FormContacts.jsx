@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import contactsActions from '../../redux/contacts/contacts-actions';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 
 import styles from './FormContacts.module.scss';
 
@@ -14,7 +14,6 @@ class FormContacts extends Component {
 
   handlChange = event => {
     const { name, value } = event.currentTarget;
-    console.log(event);
 
     this.setState({ [name]: value, disabled: false });
   };
@@ -69,12 +68,12 @@ class FormContacts extends Component {
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts.items,
+  contacts: contactsSelectors.getListContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: (name, number) =>
-    dispatch(contactsActions.handleContact(name, number)),
+    dispatch(contactsOperations.addContact(name, number)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormContacts);

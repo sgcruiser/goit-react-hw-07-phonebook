@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import contactsActions from '../../redux/contacts/contacts-actions';
+import { contactsSelectors } from '../../redux/contacts';
+import { changeFilter } from '../../redux/contacts/contacts-actions';
 
 import styles from './SearchContacts.module.scss';
 
@@ -23,13 +24,15 @@ const SearchContacts = ({ label, value, onChange }) => {
   );
 };
 
+// const mapStateToProps = state => ({
+//   value: state.contacts.filter,
+// });
 const mapStateToProps = state => ({
-  value: state.contacts.filter,
+  value: contactsSelectors.getFilter(state),
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: event =>
-    dispatch(contactsActions.changeFilter(event.currentTarget.value)),
+  onChange: event => dispatch(changeFilter(event.target.value)),
 });
 
 SearchContacts.propTypes = {
