@@ -20,9 +20,10 @@
   }
 
   &__button {
+    background-color: rgba(250, 240, 230, 0.2);
     border-radius: 10px;
-    border: none;
-    color: white;
+    border: 1px solid rgba(92, 92, 92, 0.4);
+    color: rgba(92, 92, 92, 0.4);
     padding: 5px;
     text-align: center;
     text-decoration: none;
@@ -33,8 +34,8 @@
     &:hover,
     :focus {
       color: crimson;
-      // font-weight: 500;
-      background-color: rgb(252, 152, 152);
+      background-color: rgba(252, 152, 152, 0.5);
+      border: 1px solid rgba(220, 20, 60, 1);
     }
   }
 }

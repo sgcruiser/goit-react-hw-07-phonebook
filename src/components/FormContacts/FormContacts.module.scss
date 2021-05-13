@@ -13,16 +13,22 @@
 
 .button {
   padding: 5px;
+  color: rgba(145, 145, 145, 1);
 
-  border: none;
+  background-color: rgba(250, 240, 230, 0.2);
+
+  border: 1px solid rgba(250, 240, 230, 0.2);
   border-radius: 10px;
   font-weight: 500;
 
   &:enabled {
+    border: 1px solid rgb(145, 145, 145);
+
     &:hover,
     :focus {
-      background-color: rgb(7, 241, 163);
-      color: rgb(0, 150, 100);
+      background-color: rgba(0, 150, 100, 0.12);
+      color: rgba(0, 150, 100, 1);
+      border: 1px solid rgba(0, 150, 100, 1);
     }
   }
 }

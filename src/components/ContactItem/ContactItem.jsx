@@ -1,10 +1,13 @@
+import PropTypes from 'prop-types';
+
 import styles from './ContactItem.module.scss';
 
 const ContactItem = ({ contact, onDeleteContact }) => {
+  const { name, number } = contact;
   return (
     <li className={styles.contact__item}>
-      <span className={styles.contact__name}>{contact.name}</span>
-      <span className={styles.contact__number}>{contact.number}</span>
+      <span className={styles.contact__name}>{name}</span>
+      <span className={styles.contact__number}>{number}</span>
       <button
         type="button"
         className={styles.contact__button}
@@ -14,6 +17,15 @@ const ContactItem = ({ contact, onDeleteContact }) => {
       </button>
     </li>
   );
+};
+
+ContactItem.propTypes = {
+  contact: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }).isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactItem;

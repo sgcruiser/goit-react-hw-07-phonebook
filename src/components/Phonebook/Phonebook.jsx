@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from 'react-redux';
+import { contactsOperations } from '../../redux/contacts';
+
 import Section from '../Section';
 import FormContacts from '../FormContacts';
 import SearchContacts from '../SearchContacts';
@@ -21,4 +24,13 @@ const Phonebook = () => {
   );
 };
 
-export default Phonebook;
+// const mapStateToProps = state => ({
+//   isLoading: contactsSelectors.getLoading(state),
+//   isError: contactsSelectors.getError(state),
+// });
+
+const mapDispatchToProps = dispatch => ({
+  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
+});
+
+export default connect(null, mapDispatchToProps)(Phonebook);
