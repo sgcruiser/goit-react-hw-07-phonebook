@@ -21,14 +21,12 @@ const middleware = [
 ];
 
 const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-  },
+  reducer: { contacts: contactsReducer },
   middleware,
-  devTools: process.env.NODE_ENV !== 'development',
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 // const persistor = persistStore(store);
 
-/* eslint import/no-anonymous-default-export: [2, {"allowObject": true}] */
+// eslint-disable-next-line
 export default store;

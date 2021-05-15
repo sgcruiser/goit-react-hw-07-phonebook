@@ -1,36 +1,37 @@
-import React from 'react';
-
-import { connect } from 'react-redux';
-import { contactsOperations } from '../../redux/contacts';
+import { Component } from 'react';
 
 import Section from '../Section';
 import FormContacts from '../FormContacts';
 import SearchContacts from '../SearchContacts';
 import ContactsList from '../ContactsList';
+import Loader from '../Loader';
 
 import styles from './Phonebook.module.scss';
 
-const Phonebook = () => {
-  return (
-    <div className={styles.phonebook}>
-      <Section title="Phonebook">
-        <FormContacts />
-      </Section>
-      <Section title="Contacts">
-        <SearchContacts label="Find contacts by name" />
-        <ContactsList />
-      </Section>
-    </div>
-  );
-};
+class Phonebook extends Component {
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
 
-// const mapStateToProps = state => ({
-//   isLoading: contactsSelectors.getLoading(state),
-//   isError: contactsSelectors.getError(state),
-// });
+  render() {
+    return (
+      <div className={styles.phonebook}>
+        <Section title="Phonebook">
+          <FormContacts />
+        </Section>
+        {this.props.isLoading && <Loader />}
 
-const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
-});
+        <Section title="Contacts">
+          <SearchContacts label="Find contacts by name" />
+          {this.props.isError ? (
+            <p className={styles.phonebook__error}>! Connection error</p>
+          ) : (
+            <ContactsList />
+          )}
+        </Section>
+      </div>
+    );
+  }
+}
 
-export default connect(null, mapDispatchToProps)(Phonebook);
+export default Phonebook;

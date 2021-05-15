@@ -1,4 +1,5 @@
 .phonebook {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 360px;
@@ -7,4 +8,10 @@
 
   border: 3px solid #929292;
   border-radius: 50px;
+
+  &__error {
+    color: red;
+    font-size: 22px;
+    font-weight: 500;
+  }
 }

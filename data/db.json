@@ -1,17 +1,17 @@
 {
   "contacts": [
     {
-      "name": "Cat",
+      "name": "Serg",
       "number": "+380380380380",
       "id": "1"
     },
     {
-      "name": "Dog",
+      "name": "Ari",
       "number": "+380838383838",
       "id": "2"
     },
     {
-      "name": "Mouse",
+      "name": "Tess",
       "number": "+380333888333",
       "id": "3"
     }

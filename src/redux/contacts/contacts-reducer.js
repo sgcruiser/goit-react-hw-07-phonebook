@@ -14,19 +14,13 @@ import {
   changeFilter,
 } from './contacts-actions';
 
-const findId = (state, payload) => {
-  return state.find(({ name }) => name === payload.name)
-    ? alert(`This ${payload.name} is on the list Phonebook`)
-    : [payload, ...state];
-};
+const sortId = payload => payload.sort((a, b) => a.name.localeCompare(b.name));
 
-const filterId = (state, payload) => {
-  return state.filter(({ id }) => id !== payload);
-};
+const filterId = (state, payload) => state.filter(({ id }) => id !== payload);
 
 const items = createReducer([], {
-  [fetchContactsSuccess]: (state, { payload }) => [...state, payload],
-  [addContactSuccess]: (state, { payload }) => findId(state, payload),
+  [fetchContactsSuccess]: (_, { payload }) => sortId(payload),
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) => filterId(state, payload),
 });
 
@@ -46,4 +40,16 @@ const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 
-export default combineReducers({ items, loading, filter });
+const error = createReducer(false, {
+  [fetchContactsRequest]: () => false,
+  [fetchContactsSuccess]: () => false,
+  [fetchContactsError]: () => true,
+  [addContactRequest]: () => false,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => true,
+  [deleteContactRequest]: () => false,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => true,
+});
+
+export default combineReducers({ items, loading, filter, error });

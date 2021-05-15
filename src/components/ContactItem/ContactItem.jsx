@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './ContactItem.module.scss';
 
 const ContactItem = ({ contact, onDeleteContact }) => {
-  const { name, number } = contact;
+  const { id, name, number } = contact;
+
   return (
     <li className={styles.contact__item}>
       <span className={styles.contact__name}>{name}</span>
@@ -11,7 +12,7 @@ const ContactItem = ({ contact, onDeleteContact }) => {
       <button
         type="button"
         className={styles.contact__button}
-        onClick={onDeleteContact}
+        onClick={() => onDeleteContact(id)}
       >
         Delete
       </button>

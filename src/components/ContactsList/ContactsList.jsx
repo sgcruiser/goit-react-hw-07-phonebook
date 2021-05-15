@@ -11,7 +11,7 @@ const ContactsList = ({ contacts, onDeleteContact }) => {
         <ContactItem
           key={contact.id}
           contact={contact}
-          onDeleteContact={() => onDeleteContact(contact.id)}
+          onDeleteContact={onDeleteContact}
         />
       ))}
     </ul>
@@ -19,7 +19,7 @@ const ContactsList = ({ contacts, onDeleteContact }) => {
 };
 
 ContactsList.propTypes = {
-  contacts: PropTypes.array,
+  contacts: PropTypes.array.isRequired,
 };
 
 export default ContactsList;

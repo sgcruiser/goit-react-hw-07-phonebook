@@ -13,11 +13,15 @@ class FormContacts extends Component {
   handlChange = event => {
     const { name, value } = event.currentTarget;
 
-    this.setState({ ...this.state, [name]: value, disabled: false });
+    this.setState({ [name]: value, disabled: false });
   };
 
   handlSubmit = event => {
     event.preventDefault();
+
+    if (this.props.contacts.some(name => name.name === this.state.name))
+      return alert(`This ${this.state.name} is on the list Phonebook`);
+
     this.props.onSubmit(this.state);
     this.reset();
   };
